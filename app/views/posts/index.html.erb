@@ -1,165 +1,184 @@
 <%= stylesheet_link_tag "blog.css" %>
 
 <div class="container">
-<section class="bg-light py-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <h2 class="display-5 font-weight-bold mb-5">Latest Posts</h2>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 col-xl-4">
-              <div class="image-box image-box--shadowed white-bg style-2 mb-4">
-                <div class="overlay-container">
-                  <img src="https://www.bootdey.com/image/400x150/FF0000/000000" alt="">
-                  <a href="#" class="overlay-link"></a>
-                </div>
-                <div class="body">
-                  <h5 class="font-weight-bold my-2">Project Title</h5>
-                  <p class="small">December 10, 2017</p>
-                  <div class="row d-flex align-items-center">
-                    <div class="col-6">
-                      <ul class="social-links small circle">
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="col-6 text-right">
-                      <a href="#" class="btn radius-50 btn-gray-transparent btn-animated">Read More <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                  </div>
+  <section class="bg-light py-5">
+          <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <h2 class="display-5 font-weight-bold mb-4">Latest Posts</h2>
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-xl-4">
-              <div class="image-box image-box--shadowed white-bg style-2 mb-4">
-                <div class="overlay-container">
-                  <img src="https://www.bootdey.com/image/400x150/1E90FF/000000" alt="">
-                  <a href="#" class="overlay-link"></a>
-                </div>
-                <div class="body">
-                  <h5 class="font-weight-bold my-2">Project Title</h5>
-                  <p class="small">December 10, 2017</p>
-                  <div class="row d-flex align-items-center">
-                    <div class="col-6">
-                      <ul class="social-links small circle">
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="col-6 text-right">
-                      <a href="#" class="btn radius-50 btn-gray-transparent btn-animated">Read More <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
+              <hr>
+              <br>
+              <!-- Dynamically generated posts here -->
+
+              <!-- 1: Check for no posts at all -->
+              <% if @posts.empty? %>
+              <div class="display-5 font-weight-bold mb-2">
+                <h2 style="text-align: center;">Wow this is awkward, there is nothing here...</h2>
               </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-              <div class="image-box image-box--shadowed white-bg style-2 mb-4">
-                <div class="overlay-container">
-                  <img src="https://www.bootdey.com/image/400x150/FF8C00/000000" alt="">
-                  <a href="#" class="overlay-link"></a>
-                </div>
-                <div class="body">
-                  <h5 class="font-weight-bold my-2">Project Title</h5>
-                  <p class="small">December 10, 2017</p>
-                  <div class="row d-flex align-items-center">
-                    <div class="col-6">
-                      <ul class="social-links small circle">
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="col-6 text-right">
-                      <a href="#" class="btn radius-50 btn-gray-transparent btn-animated">Read More <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-              <div class="image-box image-box--shadowed white-bg style-2 mb-4">
-                <div class="overlay-container">
-                  <img src="https://www.bootdey.com/image/400x150/9932CC/000000" alt="">
-                  <a href="#" class="overlay-link"></a>
-                </div>
-                <div class="body">
-                  <h5 class="font-weight-bold my-2">Project Title</h5>
-                  <p class="small">December 10, 2017</p>
-                  <div class="row d-flex align-items-center">
-                    <div class="col-6">
-                      <ul class="social-links small circle">
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="col-6 text-right">
-                      <a href="#" class="btn radius-50 btn-gray-transparent btn-animated">Read More <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-              <div class="image-box image-box--shadowed white-bg style-2 mb-4">
-                <div class="overlay-container">
-                  <img src="https://www.bootdey.com/image/400x150/008B8B/000000" alt="">
-                  <a href="#" class="overlay-link"></a>
-                </div>
-                <div class="body">
-                  <h5 class="font-weight-bold my-2">Project Title</h5>
-                  <p class="small">December 10, 2017</p>
-                  <div class="row d-flex align-items-center">
-                    <div class="col-6">
-                      <ul class="social-links small circle">
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="col-6 text-right">
-                      <a href="#" class="btn radius-50 btn-gray-transparent btn-animated">Read More <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-              <div class="image-box image-box--shadowed white-bg style-2 mb-4">
-                <div class="overlay-container">
-                  <img src="https://www.bootdey.com/image/400x150/6495ED/000000" alt="">
-                  <a href="#" class="overlay-link"></a>
-                </div>
-                <div class="body">
-                  <h5 class="font-weight-bold my-2">Project Title</h5>
-                  <p class="small">December 10, 2017</p>
-                  <div class="row d-flex align-items-center">
-                    <div class="col-6">
-                      <ul class="social-links small circle">
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="col-6 text-right">
-                      <a href="#" class="btn radius-50 btn-gray-transparent btn-animated">Read More <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+              <% else %>
+                <% @posts.reverse! %>
+                <% @posts.each do | post | %>
+
+                <% if post.nil? %>
+                  <% next %>
+                <% end %>
+
+                  <% get_user = User.find(post.user_id) %>
+                  <% role = get_user.role %>
+
+                  <% if role == "admin" %>
+                      <% color = "red" %>
+                  <% elsif role == "moderator" %>
+                      <% color = "yellow" %>
+                  <% else %>
+                      <% color = "blue" %>
+                  <%end%> 
+  
+                   <!-- <div class="col-md-6 col-xl-4"> -->
+                      <div class="image-box image-box--shadowed white-bg style-2 mb-4">
+                        <div class="overlay-container">
+                          <!-- Color based on role -->
+                          <svg width="100%" height="100%">
+                            <rect width="100%" height="100%" fill="<%=color%>" />
+                          </svg>
+                          <a href="#" class="overlay-link"></a>
+                        </div>
+
+                        <div class="body">
+                          <h5 class="font-weight-bold my-2"><%= post.title %></h5>
+                          <p class="small">By <%=link_to get_user.username, (user_path(get_user.username)) %></p>
+                          <p class="small"><%= post.created_at %></p>
+                          <hr>
+                          <div class="row d-flex align-items-center">
+                            <div class="col-6">
+                              <p><%= post.content %></p>
+                            </div>
+                          </div>
+                          <div class="row d-flex align items-right">
+                            <div class="col-3">
+                              <% if current_user %>
+                                <% if current_user.role == "admin" %>
+                                <br>
+                                  <a href="#" class="btn radius-50 btn-danger btn-animated">Delete <i class="fa fa-arrow-right"></i></a>
+                                  <% end %>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  <%# </div> %>
+                <% end %>
+            <% end %>
+
+  </section>
+
+<section>
+    <div class="container">
+        <div class=" text-center mt-5 ">
+
+            <h3>Create a new post!</h3>
+                
+            
         </div>
-      </section>
+
+    
+    <div class="row ">
+      <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+            <div class="card-body bg-light">
+       
+            <div class = "container">
+            <%= form_with model: @post, url: posts_path, id:"contact-form" do | f | %>
+
+            <div class="controls">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name"><strong>Title</strong> <span style="color: blue;">*</span></label>
+                            <%= f.text_field :title, id:"form_name", class:"form-control", placeholder:"Please enter your post's title", :required => true %>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="form_message"><strong>Message</strong> <span style="color: blue;">*</span></label>
+                            <%= f.text_area :content, id:"form_message", class:"form-control", placeholder:"Write your message here.", :required => true %>
+                        </div>
+                        <!--
+                          f.label :password_confirmation, class:"form-label", for:"form3Example4cd"%></label>
+                      f.password_field :password_confirmation, id:"form3Example4cd", class:"form-control", :required => true %>
+                    -->
+                      </div>
+
+
+                    <div class="col-md-12">
+                        <br>
+                        <%= f.submit "Post", class:"btn btn-primary btn-send pt-2 btn-block" %>
+                </div>
+          
+                </div>
+
+
+          </div>
+          <% end %>
+
+        </div>
+            </div>
+
+
+    </div>
+        <!-- /.8 -->
+
+    </div>
+    <!-- /.row-->
+
 </div>
+</div>
+
+  </section>
+</div>
+
+
+<style type="text/css">
+
+h1 {
+    margin-bottom: 40px;
+}
+
+label {
+    color: #333;
+}
+
+.btn-send {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    width: 80%;
+    margin-left: 3px;
+    background-color: #B91D33;
+    }
+.btn-send:hover {
+  background-color: #94061a;
+}
+.btn-send:active {
+  background-color: #3b0109;
+}
+.help-block.with-errors {
+    color: #ff5050;
+    margin-top: 5px;
+
+}
+
+.card{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+</style>

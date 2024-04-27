@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	before_destroy :destroy_posts
 	has_secure_password
 	has_one_attached :profile_picture
 	validate :password_complexity
@@ -36,5 +37,8 @@ class User < ApplicationRecord
 	    end
 	 end
 
+	def destroy_posts
+		self.posts.destroy_all
+	end
 
 end

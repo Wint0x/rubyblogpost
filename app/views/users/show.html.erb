@@ -32,10 +32,12 @@
             <br>
             <p class="text-muted mb-1"><strong>Joined at:</strong> <%= @user.created_at %></p>
 
-            <div class="d-flex justify-content-center mb-2">
-              <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Follow</button>
-              <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">Message</button>
-            </div>
+            <% if @user != current_user %>
+              <div class="d-flex justify-content-center mb-2">
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Follow</button>
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">Message</button>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="card mb-4 mb-lg-0">
