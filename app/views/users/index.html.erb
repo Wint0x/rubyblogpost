@@ -1,0 +1,69 @@
+<!-- app/views/users/index.html.erb -->
+<h1>User Index</h1>
+<hr>
+<hr>
+<hr>
+
+<%= link_to 'Register', new_user_path, id:"register_link" %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>About me</th>
+      <th>Role</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.bio or "None"%></td>
+        <td><%= user.role %></td>
+        <td>
+          <%= link_to "Delete", user_path(user.id), class:"btn btn-danger btn-sm", :confirm => "Are you sure?", data: { turbo_method: :delete }  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<style type="text/css">
+    #register_link {
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    color: #54b3d6;
+    padding: 0 .25rem;
+    margin: 0 -.25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  }
+  #register_link:hover {
+    color: #fff;
+    box-shadow: inset 145px 0 0 0 #54b3d6;;
+  }
+
+  /* Presentational styles */
+  #register_link {
+    color: #54b3d6;
+    font-family: 'Poppins', sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+
+  body {
+    display: grid;
+  }
+
+  h1{
+    display: inline-grid;
+    height: 10vh;
+    place-items: center;
+  }
+</style>
+

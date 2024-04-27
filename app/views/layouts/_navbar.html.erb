@@ -1,0 +1,94 @@
+<% if request.url != "/users/" %> 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      data-mdb-collapse-init
+      class="navbar-toggler"
+      type="button"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="/">
+        
+          <%= image_tag "logo.png", :alt => "logo", :height => 100 %>
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <% if current_user %>
+            <%= link_to 'Logout', user_session_path(current_user), class:"nav-link", data: { turbo_method: :delete } %>
+          <% else %>
+            <%= link_to "Login", user_sessions_new_path, class:"nav-link" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Register", new_user_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <% if current_user %>
+            <%= link_to "Profile", user_path(current_user.username), class:"nav-link" %>
+          <% else %>
+
+          <% end %>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <!-- Icon -->
+      <a class="text-reset me-3" href="#">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+
+      </div>
+      <!-- Avatar -->
+      <div class="dropdown">
+        <!-- Profile Logo and username -->
+        <!-- Get from database if exists -->
+        <% if current_user %>
+
+          <% if current_user.profile_picture.attached? %>
+
+            <%= image_tag url_for(current_user.profile_picture), alt:"avatar", class:"rounded-circle", height:"25", loading:"lazy" %>
+
+          <% else %>
+            <%= image_tag "guest_user.png", alt:"avatar", class:"rounded-circle", height:"25", loading:"lazy" %>
+          <% end %>
+
+          <div class="col xs-2" align="center">
+            <span> <%= current_user.username %> </span>
+          </div>
+
+        <% else %>
+
+        <%= image_tag "guest_user.png", alt:"avatar", class:"rounded-circle", height:"25", loading:"lazy" %>
+        <div class="col xs-2" align="center">
+          <span>Not logged in</span>
+        </div>
+
+        <% end %>
+
+        <!-- END -->
+      </div>
+    </div>
+    <!-- Right elements -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+<% end %>
