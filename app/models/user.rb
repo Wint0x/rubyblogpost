@@ -2,6 +2,7 @@ class User < ApplicationRecord
 	has_secure_password
 	has_one_attached :profile_picture
 	validate :password_complexity
+	validate :valid_location
 
 	  # Validation for email format
 	  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -26,6 +27,14 @@ class User < ApplicationRecord
 	    errors.add :password, "must include at least one lowercase letter, one uppercase letter, one digit, and needs to be minimum 8 characters."
 	  end
 	end
+
+	 def valid_location
+	    countries_file = Rails.root.join('app/assets/config/countries.txt')
+	    countries = File.readlines(countries_file).map(&:chomp)
+	    unless countries.include?(location)
+	      errors.add(:location, "is not valid")
+	    end
+	 end
 
 
 end

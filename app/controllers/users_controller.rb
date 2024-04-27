@@ -23,7 +23,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.role = "user"
-    
+
+    @user.location.downcase!
+    @user.location.capitalize!
+
      if user_params[:profile_picture].present? && !user_params[:profile_picture].is_a?(String)
       @user.profile_picture.attach(user_params[:profile_picture])
     
@@ -72,7 +75,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :profile_picture, :bio)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :profile_picture, :location, :bio)
   end
 
   def set_user
