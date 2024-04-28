@@ -34,10 +34,10 @@ class UsersController < ApplicationController
       # Valid MIME type
       
       allowed_types = ['image/jpeg', 'image/png', 'image/gif'] # Specify allowed MIME types
-      if allowed_types.include?(user_params[:profile_picture].content_type)
+      if allowed_types.include?(user_params[:profile_picture].content_type) and validate_extension(user_params[:profile_picture])
         @user.profile_picture.attach(user_params[:profile_picture])
       else
-        flash[:error] = "Only image files are allowed!"
+        flash[:error] = "Only JPEG, PNG, and GIF files are allowed for profile pictures."
         render :new, status: :unprocessable_entity
         return
       end
@@ -113,5 +113,11 @@ class UsersController < ApplicationController
       flash[:alert] = "User not found"
       redirect_to root_path
     end
+  end
+
+  def validate_extension(file)
+    @ALLOWED_EXTENSIONS = %w[.jpg .jpeg .png .gif]
+    extension = File.extname(file.original_filename).downcase
+    @ALLOWED_EXTENSIONS.include?(extension)
   end
 end
