@@ -27,11 +27,24 @@ class UsersController < ApplicationController
     @user.location.downcase!
     @user.location.capitalize!
 
-     if user_params[:profile_picture].present? && !user_params[:profile_picture].is_a?(String)
-      @user.profile_picture.attach(user_params[:profile_picture])
-    
+    if user_params[:profile_picture].present? && !user_params[:profile_picture].is_a?(String)
+
+      #Security
+
+      # Valid MIME type
+      
+      allowed_types = ['image/jpeg', 'image/png', 'image/gif'] # Specify allowed MIME types
+      if allowed_types.include?(user_params[:profile_picture].content_type)
+        @user.profile_picture.attach(user_params[:profile_picture])
+      else
+        flash[:error] = "Only image files are allowed!"
+        render :new, status: :unprocessable_entity
+        return
+      end
+
     else
       @user.profile_picture.attach(io: File.open("app/assets/images/guest_user.png"), filename: "guest_user.png", content_type: "image/png")
+
     end
 
     # Already authenticated
