@@ -60,9 +60,9 @@
                           <div class="row d-flex align items-right">
                             <div class="col-3">
                               <% if current_user %>
-                                <% if current_user.role == "admin" %>
+                                <% if current_user.role == "admin" or current_user.role == "moderator"%>
                                 <br>
-                                  <a href="#" class="btn radius-50 btn-danger btn-animated">Delete <i class="fa fa-arrow-right"></i></a>
+                                <%= link_to "Delete", post_path(post.id), class:"btn radius-50 btn-danger btn-animated", :confirm => "Are you sure?", data: { turbo_method: :delete }  %>
                                   <% end %>
                               <% end %>
                             </div>
@@ -72,7 +72,6 @@
                   <%# </div> %>
                 <% end %>
             <% end %>
-
   </section>
 
 <section>

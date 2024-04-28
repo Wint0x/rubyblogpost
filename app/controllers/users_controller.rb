@@ -53,12 +53,23 @@ class UsersController < ApplicationController
   # DELETE HTTP
   def destroy
 
+    if not current_user
+      render plain: '403 Forbidden', status: :forbidden
+      return
+    end
+
+    if current_user.role != "admin"
+      render plain: '403 Forbidden', status: :forbidden
+      return
+    end
+
     # Cannot delete admin!
     if @user.id == 1
       respond_to do |format|
         format.html {redirect_to users_url, notice: 'Cannot delete admin!'}
         format.json { head :no_content}
       end
+
     else
       @user.destroy!
       respond_to do |format|

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	before_action :set_post, only: [:destroy]
 	before_action :post_params, only: [:create]
 
 	def new
@@ -34,7 +35,45 @@ class PostsController < ApplicationController
 	  end
 	end
 
+	def destroy
+		if not current_user
+			puts "Debug"
+	      render plain: '403 Forbidden', status: :forbidden
+	      return
+	    end
+
+	    if not ["admin","moderator"].include? current_user.role
+	    	puts "Wtf"
+	    	puts current_user.role 
+	      	render plain: '403 Forbidden', status: :forbidden
+	      	return
+	    
+	    else
+
+	       post_author = User.find(@post.user_id)
+
+	       if post_author.role == "admin" and current_user.role != "admin"
+
+	       		respond_to do |format| 
+	       			format.html { redirect_to root_path, notice: 'Only admins can delete posts of other admins.'}
+		        	format.json { head :no_content }
+		        end
+		    else
+	  	    	@post.destroy!
+
+		        respond_to do |format|
+		        	format.html { redirect_to root_path, notice: 'Post was successfully deleted.' }
+		        	format.json { head :no_content }
+		        end
+	    	end
+	    end
+    end
+
 private
+	def set_post
+		@post = Post.find(params[:id])
+	end
+
 	def post_params
 		params.permit(:title, :content)
 	end
